@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 const fs = require('fs');
-const { get } = require('http');
 const path = "./bin/db.json"
 
 
@@ -25,12 +24,12 @@ const saveTasks = (ListTasks) => {
 }
 
 // CREATE
-const addTasks = (tasks) => {
+const addTasks  = async (tasks) => {
     const ListTasks = getTasks() // valor =  objeto JavaScript, se arquivo estiver vazio retorna [] 
-
-    const newList = {
+     const newList = await {
         id: newId(ListTasks),
         Tarefa: tasks,
+        description: await description(), // aguarda a entrada
         progresso: "todo",
         create:createAt(),
         updateDate:createAt()
@@ -125,6 +124,20 @@ const createAt = ()=>{
     const date = new Date()
     return date.toLocaleString()
 }
+
+const description = () => {
+    return new Promise((resolve) => {
+        process.stdin.resume();
+        process.stdin.setEncoding('utf8');
+        process.stdout.write("Digite a descrição da tarefa:\n");
+
+        process.stdin.once('data', (data) => {
+            const input = data.trim();
+            process.stdin.pause();
+            resolve(input);
+        });
+    });
+};
 
 if (process.argv.includes("add")) {
     addTasks(process.argv.slice(-1)[0])
