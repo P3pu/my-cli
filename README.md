@@ -1,7 +1,7 @@
 <h1 align="center">Task Tracker CLI</h1>
 
 <p>
-    <strong>COMANDOS</strong>:
+    <strong>COMANDOS</strong>: <br>
     // adicionar <br>
      task add "tarefa" <br>
     // atualizar <br>
