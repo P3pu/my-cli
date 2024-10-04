@@ -3,11 +3,11 @@
 <p>
     <strong>COMANDOS</strong>:
     // adicionar
-     task add "tarefa"
+     task add "tarefa" <br>
     // atualizar 
-     task update {id} "tarefa"
+     task update {id} "tarefa" <br>
     // deletar 
-     task delete {id}
+     task delete {id} <br>
     // progresso da terefa
       task mark-in-progress {id} // progresso = in-progress
       task mark-done {id} // progresso = done
